@@ -1,0 +1,331 @@
+<mat-progress-bar
+    *ngIf="pageLoading"
+    class="absolute top-0"
+    mode="indeterminate"
+></mat-progress-bar>
+<ng-container *ngIf="!pageLoading">
+    <div class="flex flex-col flex-auto min-w-0">
+        <div class="w-full mx-auto flex flex-col bg-white">
+            <app-slider-main></app-slider-main>
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap mt-3 px-4 py-4"
+            >
+                <div class="flex flex-col w-full bg-card">
+                    <div class="flex items-center">
+                        <div
+                            class="flex flex-col w-full max-w-screen-xl mx-auto"
+                        >
+                            <div class="w-full">
+                                <div
+                                    class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap mt-3"
+                                >
+                                    <div class="flex-1 space-y-2 w-full">
+                                        <div class="justify-center flex">
+                                            <span
+                                                class="text-3xl font-bold tracking-tight text-primary sm:text-4xl"
+                                            >
+                                                {{
+                                                    "Cuasneaker" | transloco
+                                                }}</span
+                                            >
+                                        </div>
+                                        <div class="w-full flex">
+                                            <span class="md:text-lg xl:text-xl">
+                                                CuaSneaker cửa hàng cung các mặt
+                                                hàng thời trang chính hãng với
+                                                hơn 3 năm kinh nghiệm trong lĩnh
+                                                vực bán buôn , phân phối và bán
+                                                lẻ Trong hơn 2 năm 2019-{{
+                                                    currentYear
+                                                }}
+                                                chúng tôi hãnh diện là nhà phân
+                                                phối , bán lẻ hàng chính hãng có
+                                                tiếng ở VN , đã cung cấp rất
+                                                nhiều sản phẩm cho người nổi
+                                                tiếng , các cửa hàng có tiếng và
+                                                mang đến quý khách hàng sản phẩm
+                                                chính hãng , hơn thế nữa cung
+                                                cấp chế độ đổi theo giúp cho quý
+                                                khách yên tâm sử dụng sản
+                                                phẩm.</span
+                                            >
+                                        </div>
+                                        <div>
+                                            <span class="md:text-lg xl:text-xl">
+                                                Địa chỉ :
+                                                {{
+                                                    thong_tin_website.dia_chi
+                                                }}</span
+                                            >
+                                        </div>
+                                        <div>
+                                            <span class="md:text-lg xl:text-xl"
+                                                >Email:
+                                                {{
+                                                    thong_tin_website.email
+                                                }}</span
+                                            >
+                                        </div>
+                                        <div>
+                                            <span class="md:text-lg xl:text-xl"
+                                                >Số điện thoại:
+                                                {{
+                                                    thong_tin_website.so_dien_thoai
+                                                }}
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="md:pt-3 pt-1 md:w-3/4 w-full"
+                                        >
+                                            <iframe
+                                                *ngIf="isScreenSmall"
+                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248264.19029138968!2d109.04583435254722!3d13.52773699190195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f9f3feb73545b%3A0xa487d74a1cc56499!2zVHguIFPDtG5nIEPhuqd1LCBQaMO6IFnDqm4sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1705331259883!5m2!1svi!2s"
+                                                style="border: 0"
+                                                allowfullscreen=""
+                                                loading="lazy"
+                                                referrerpolicy="no-referrer-when-downgrade"
+                                            ></iframe>
+                                            <iframe
+                                                *ngIf="!isScreenSmall"
+                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248264.19029138968!2d109.04583435254722!3d13.52773699190195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f9f3feb73545b%3A0xa487d74a1cc56499!2zVHguIFPDtG5nIEPhuqd1LCBQaMO6IFnDqm4sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1705331259883!5m2!1svi!2s"
+                                                width="600"
+                                                height="450"
+                                                style="border: 0"
+                                                allowfullscreen=""
+                                                loading="lazy"
+                                                referrerpolicy="no-referrer-when-downgrade"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div
+                                            class="mx-auto max-w-2xl text-center"
+                                        >
+                                            <h2
+                                                class="text-3xl font-bold tracking-tight text-primary sm:text-4xl"
+                                            >
+                                                {{
+                                                    "portal.lien_hien"
+                                                        | transloco
+                                                }}
+                                            </h2>
+                                            <p
+                                                class="mt-2 text-lg leading-8 text-gray-600 italic"
+                                            >
+                                                {{
+                                                    "portal.vui_long_dien_nhung_thong_tin_duoi_day"
+                                                        | transloco
+                                                }}
+                                            </p>
+                                        </div>
+                                        <form
+                                            action="#"
+                                            method="POST"
+                                            class="mx-8"
+                                        >
+                                            <div
+                                                class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
+                                            >
+                                                <div>
+                                                    <label
+                                                        for="first-name"
+                                                        class="block text-sm font-semibold leading-6 text-black"
+                                                        >{{
+                                                            "portal.first_name"
+                                                                | transloco
+                                                        }}</label
+                                                    >
+                                                    <div class="mt-2.5">
+                                                        <input
+                                                            type="text"
+                                                            name="first-name"
+                                                            id="first-name"
+                                                            autocomplete="given-name"
+                                                            class="block w-full rounded-md border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label
+                                                        for="last-name"
+                                                        class="block text-sm font-semibold leading-6 text-black"
+                                                        >{{
+                                                            "portal.last_name"
+                                                                | transloco
+                                                        }}</label
+                                                    >
+                                                    <div class="mt-2.5">
+                                                        <input
+                                                            type="text"
+                                                            name="last-name"
+                                                            id="last-name"
+                                                            autocomplete="family-name"
+                                                            class="block w-full rounded-md border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div class="sm:col-span-2">
+                                                    <label
+                                                        for="email"
+                                                        class="block text-sm font-semibold leading-6 text-black"
+                                                        >{{
+                                                            "portal.email"
+                                                                | transloco
+                                                        }}</label
+                                                    >
+                                                    <div class="mt-2.5">
+                                                        <input
+                                                            type="email"
+                                                            name="email"
+                                                            id="email"
+                                                            autocomplete="email"
+                                                            class="block w-full rounded-md border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="sm:col-span-2">
+                                                    <label
+                                                        for="phone-number"
+                                                        class="block text-sm font-semibold leading-6 text-black"
+                                                        >{{
+                                                            "portal.phone"
+                                                                | transloco
+                                                        }}</label
+                                                    >
+                                                    <div class="mt-2.5">
+                                                        <input
+                                                            type="tel"
+                                                            name="phone-number"
+                                                            id="phone-number"
+                                                            autocomplete="tel"
+                                                            class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div class="sm:col-span-2">
+                                                    <label
+                                                        for="message"
+                                                        class="block text-sm font-semibold leading-6 text-black"
+                                                        >{{
+                                                            "portal.content"
+                                                                | transloco
+                                                        }}</label
+                                                    >
+                                                    <div class="mt-2.5">
+                                                        <textarea
+                                                            name="message"
+                                                            id="message"
+                                                            rows="4"
+                                                            class="block w-full rounded-md border-0 px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:col-span-2">
+                                                    <!-- Capcha field -->
+                                                    <mat-form-field
+                                                        class="w-full"
+                                                    >
+                                                        <mat-label>
+                                                            Capcha
+                                                            <span
+                                                                style="
+                                                                    color: red;
+                                                                "
+                                                                *ngFor="
+                                                                    let item of errorModel
+                                                                        | filter
+                                                                            : 'key'
+                                                                            : 'captcha';
+                                                                    index as i
+                                                                "
+                                                            >
+                                                                (
+                                                                <span
+                                                                    *ngFor="
+                                                                        let msg of item.value
+                                                                    "
+                                                                    >{{
+                                                                        msg
+                                                                            | transloco
+                                                                    }}</span
+                                                                >
+                                                                )
+                                                            </span>
+                                                        </mat-label>
+                                                        <span matPrefix>
+                                                            <img
+                                                                [src]="
+                                                                    srcCaptcha
+                                                                "
+                                                                (click)="
+                                                                    realoadCapcha()
+                                                                "
+                                                                style="
+                                                                    width: 100px;
+                                                                "
+                                                                class="h-auto"
+                                                            />
+                                                        </span>
+                                                        <input
+                                                            type="text"
+                                                            matInput
+                                                        />
+                                                        <!-- [(ngModel)]="record.captcha" -->
+                                                        <button
+                                                            type="button"
+                                                            mat-icon-button
+                                                            matSuffix
+                                                            (click)="
+                                                                realoadCapcha()
+                                                            "
+                                                        >
+                                                            <mat-icon
+                                                                >refresh</mat-icon
+                                                            >
+                                                        </button>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+                                            >
+                                                <div
+                                                    align="left"
+                                                    class="flex-1"
+                                                >
+                                                    <button
+                                                        mat-flat-button=""
+                                                        class="mat-focus-indicator hover:bg-primary-500 bg-primary-600 fuse-mat-button-large w-50 md:mb-4 md:mt-1 mt-0 mat-flat-button mat-button-base mat-primary"
+                                                    >
+                                                        <span
+                                                            class="mat-button-wrapper"
+                                                            ><span
+                                                                class="ng-star-inserted"
+                                                            >
+                                                                {{
+                                                                    "portal.send"
+                                                                        | transloco
+                                                                }}
+                                                            </span></span
+                                                        ><span
+                                                            matripple=""
+                                                            class="mat-ripple mat-button-ripple"
+                                                        ></span
+                                                        ><span
+                                                            class="mat-button-focus-overlay"
+                                                        ></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,52 @@
+<!-- ===== Nhãn hiệu Start ===== -->
+<div class="bg-white py-24 sm:py-12" data-aos="fade-right" data-aos-once="true">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2
+            class="text-center text-xl font-semibold uppercase leading-8 text-gray-900"
+        >
+            <!-- Trusted by the world’s most innovative teams -->
+            {{ "portal.top_thuong_hieu" | transloco }}
+        </h2>
+        <!-- <div
+            class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5"
+        >
+            <ng-container *ngFor="let item of list_nhan_hieu">
+                <img
+                    class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                    [src]="item.image"
+                    alt="Transistor"
+                    width="158"
+                    height="48"
+                />
+            </ng-container>
+        </div> -->
+        <div class="w-full flex flex-col bg-white">
+            <div class="flex flex-col w-full">
+                <swiper
+                    [spaceBetween]="10"
+                    [slidesPerView]="5"
+                    [autoplay]="{ delay: 2000 }"
+                    class="mySwiperBanner"
+                >
+                    <ng-template
+                        swiperSlide
+                        *ngFor="let item of list_nhan_hieu; index as i"
+                    >
+                        <div class="flex-none">
+                            <div class="flex flex-col p-4">
+                                <div class="relative cursor-pointer">
+                                    <img
+                                        data-popover-target="popover-default"
+                                        style="max-height: 200px"
+                                        [src]="item.image"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </swiper>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ===== Nhãn hiệu End ===== -->

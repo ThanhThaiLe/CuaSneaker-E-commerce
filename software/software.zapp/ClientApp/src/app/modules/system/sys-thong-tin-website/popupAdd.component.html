@@ -1,0 +1,793 @@
+<div
+    class="flex flex-col flex-auto w-full max-w-3xl mx-auto h-fit overflow-y-visible mobile:mb-20"
+>
+    <!-- Header -->
+    <div
+        class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary"
+    >
+        <div
+            class="text-lg font-medium"
+            transloco="NAV.sys_thong_tin_website"
+        ></div>
+    </div>
+    <!-- Card Form -->
+    <div class="w-full p-6 sm:p-8 space-y-1 overflow-y-auto">
+        <div class="flex flex-row justify-end space-x-2">
+            <button
+                class="rounded py-2 px-4 font-bold bg-gray-500 hover:bg-gray-600 items-center"
+                (click)="save()"
+            >
+                <p transloco="common.save" class="mb-0 text-white"></p>
+            </button>
+            <button
+                class="py-2 px-4 font-bold rounded bg-teal-500 hover:bg-teal-600 items-center"
+                (click)="close()"
+            >
+                <p transloco="common.close" class="mb-0 text-white"></p>
+            </button>
+        </div>
+
+        <div class="mb-2">
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.dia_chi"
+                        [label]="'system.dia_chi'"
+                        [keyError]="'db.dia_chi'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.so_dien_thoai"
+                        [label]="'system.so_dien_thoai'"
+                        [keyError]="'db.so_dien_thoai'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.email"
+                        [label]="'system.email'"
+                        [keyError]="'db.email'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+
+            <!-- hình ảnh image_logo -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_logo"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_logo';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="image_logo.click()"
+                        appDragDrop
+                        (onFileDropped)="DragAndDropProgressimage_logo($event)"
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_logo == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_logo != null"
+                            [src]="record.db.image_logo"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #image_logo
+                            (change)="ChoseFileImageimage_logo($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressImage_logo != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressImage_logo"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{
+                                left: fileUploadProgressImage_logo + '%'
+                            }"
+                        >
+                            {{ fileUploadProgressImage_logo }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_logo"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_logo != null"
+                            [src]="record.db.image_logo"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <!-- hình ảnh image_footer -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_footer"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_footer';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="image_footer.click()"
+                        appDragDrop
+                        (onFileDropped)="
+                            DragAndDropProgressimage_footer($event)
+                        "
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_footer == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_footer != null"
+                            [src]="record.db.image_footer"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #image_footer
+                            (change)="ChoseFileImageimage_footer($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressimage_footer != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressimage_footer"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{
+                                left: fileUploadProgressimage_footer + '%'
+                            }"
+                        >
+                            {{ fileUploadProgressimage_footer }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_footer"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_footer != null"
+                            [src]="record.db.image_footer"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.link_facebook"
+                        [label]="'system.link_facebook'"
+                        [keyError]="'db.link_facebook'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+
+            <!-- hình ảnh image_facebook -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_facebook"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_facebook';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="image_facebook.click()"
+                        appDragDrop
+                        (onFileDropped)="
+                            DragAndDropProgressimage_facebook($event)
+                        "
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_facebook == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_facebook != null"
+                            [src]="record.db.image_facebook"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #image_facebook
+                            (change)="ChoseFileImageimage_facebook($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressimage_facebook != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressimage_facebook"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{
+                                left: fileUploadProgressimage_facebook + '%'
+                            }"
+                        >
+                            {{ fileUploadProgressimage_facebook }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_facebook"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_facebook != null"
+                            [src]="record.db.image_facebook"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.link_youtube"
+                        [label]="'system.link_youtube'"
+                        [keyError]="'db.link_youtube'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+
+            <!-- hình ảnh image_youtube -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_youtube"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_youtube';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="image_youtube.click()"
+                        appDragDrop
+                        (onFileDropped)="
+                            DragAndDropProgressimage_youtube($event)
+                        "
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_youtube == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_youtube != null"
+                            [src]="record.db.image_youtube"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #image_youtube
+                            (change)="ChoseFileImageimage_youtube($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressimage_youtube != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressimage_youtube"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{
+                                left: fileUploadProgressimage_youtube + '%'
+                            }"
+                        >
+                            {{ fileUploadProgressimage_youtube }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_youtube"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_youtube != null"
+                            [src]="record.db.image_youtube"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.link_linkedin"
+                        [label]="'system.link_linkedin'"
+                        [keyError]="'db.link_linkedin'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+
+            <!-- hình ảnh image_linkedin -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_linkedin"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_linkedin';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="image_linkedin.click()"
+                        appDragDrop
+                        (onFileDropped)="
+                            DragAndDropProgressimage_linkedin($event)
+                        "
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_linkedin == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_linkedin != null"
+                            [src]="record.db.image_linkedin"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #image_linkedin
+                            (change)="ChoseFileImageimage_linkedin($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressimage_linkedin != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressimage_linkedin"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{
+                                left: fileUploadProgressimage_linkedin + '%'
+                            }"
+                        >
+                            {{ fileUploadProgressimage_linkedin }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_linkedin"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_linkedin != null"
+                            [src]="record.db.image_linkedin"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.link_instagram"
+                        [label]="'system.link_instagram'"
+                        [keyError]="'db.link_instagram'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+
+            <!-- hình ảnh image_instagram -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_instagram"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_instagram';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="image_instagram.click()"
+                        appDragDrop
+                        (onFileDropped)="
+                            DragAndDropProgressimage_instagram($event)
+                        "
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_instagram == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_instagram != null"
+                            [src]="record.db.image_instagram"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #image_instagram
+                            (change)="ChoseFileImageimage_instagram($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressimage_instagram != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressimage_instagram"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{
+                                left: fileUploadProgressimage_instagram + '%'
+                            }"
+                        >
+                            {{ fileUploadProgressimage_instagram }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_instagram"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_instagram != null"
+                            [src]="record.db.image_instagram"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <br />
+        </div>
+
+        <div class="flex flex-row justify-end space-x-2">
+            <button
+                class="rounded py-2 px-4 font-bold bg-gray-500 hover:bg-gray-600 items-center"
+                (click)="save()"
+            >
+                <p transloco="common.save" class="mb-0 text-white"></p>
+            </button>
+            <button
+                class="py-2 px-4 font-bold rounded bg-teal-500 hover:bg-teal-600 items-center"
+                (click)="close()"
+            >
+                <p transloco="common.close" class="mb-0 text-white"></p>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,267 @@
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0 bg-white">
+    <div
+        class="scroll-to-top"
+        [ngClass]="{ 'show-scrollTop': windowScrolled }"
+        style="z-index: 9999999"
+    >
+        <button
+            mat-raised-button
+            class="background-color-web-primary"
+            style="min-width: 35px; width: 35px"
+            (click)="scrollToTop()"
+        >
+            <span>
+                <mat-icon
+                    style="color: white !important; vertical-align: middle"
+                    >arrow_upward</mat-icon
+                >
+            </span>
+        </button>
+    </div>
+    <!-- Header -->
+    <div
+        class="flex items-center w-full z-50 shadow bg-card print:hidden transition duration-700 background-color-web-primary"
+        style="height: 38px !important"
+    >
+        <div class="w-full max-w-screen-xl flex md:pr-16 z-50 mx-auto">
+            <div class="w-full flex z-50" *ngIf="is_login == false">
+                <language class="ml-auto"></language>
+                <a
+                    mat-button
+                    class=""
+                    style="padding: 0 10px !important"
+                    [routerLink]="'/sign-in'"
+                >
+                    <mat-icon class="text-white mr-1 text-base"
+                        >account_circle</mat-icon
+                    >
+                    <span
+                        class="text-white text-base"
+                        transloco="common.signin"
+                    ></span>
+                </a>
+
+                <a
+                    mat-button
+                    [routerLink]="'/sign-up'"
+                    style="padding: 0 10px !important"
+                >
+                    <mat-icon class="text-white mr-1 text-base"
+                        >person_add</mat-icon
+                    >
+                    <span
+                        class="text-base text-white"
+                        transloco="common.signup"
+                    ></span>
+                </a>
+            </div>
+
+            <div class="w-full flex z-50" *ngIf="is_login == true">
+                <language class="ml-auto"></language>
+                <user-menu></user-menu>
+                <notifications [notifications]="notifications"></notifications>
+                <a
+                    mat-button
+                    *ngIf="user.type == 1"
+                    class="text-white"
+                    style="padding: 0 10px !important"
+                    [routerLink]="'/home'"
+                >
+                    <mat-icon
+                        [svgIcon]="'heroicons_solid:cog'"
+                        class="text-base text-white mr-1"
+                    ></mat-icon>
+                    <span class="text-base" transloco="common.management"></span
+                ></a>
+            </div>
+        </div>
+    </div>
+    <!-- Content -->
+    <div class="flex flex-col flex-auto w-full">
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
+        <router-outlet *ngIf="true"></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <div
+        class="flex flex-col md:flex-row lg:flex-row flex-wrap w-full print:hidden z-50 background-color-web-primary"
+    >
+        <div
+            class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap w-full leading-10 mx-auto md:px-20 px-6 pt-4 max-w-screen-xl background-color-web-primary"
+        >
+            <div *ngIf="!isScreenSmall" class="flex-1 items-center">
+                <img class="w-full" src="/assets/images/logo/logo.jpg" />
+            </div>
+            <div *ngIf="isScreenSmall" class="flex-1 items-center">
+                <img class="w-1/2" src="/assets/images/logo/logo.jpg" />
+            </div>
+            <div class="flex-1 text-white">
+                <span class="text-2xl font-bold uppercase">Liên hệ</span>
+                <hr
+                    style="
+                        border-color: #ffffff;
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                        border-bottom-width: 0px;
+                        border-top-width: 1px !important;
+                    "
+                />
+                <div class="flex place-items-start space-x-1">
+                    <svg
+                        class="h-5 w-5 text-white"
+                        style="margin-top: 10px"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                        />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <span>77 Hoàng Văn Thái, P.Tân Phú, Q.7, TP.HCM</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <svg
+                        class="h-5 w-5 text-white"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
+                        />
+                    </svg>
+                    <span>(+84) 28 54 155 553</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <svg
+                        class="h-5 w-5 text-white"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    <span>info@worldsoftco.com</span>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div align="left" class="flex-1 text-white">
+                    <span
+                        class="text-2xl font-bold uppercase"
+                        transloco="portal.dieu_khoan"
+                    ></span>
+                    <hr
+                        style="
+                            margin-top: 8px;
+                            margin-bottom: 8px;
+                            border-bottom-width: 0px;
+                            border-top-width: 1px !important;
+                        "
+                    />
+                    <div class="flex flex-col text-white leading-10">
+                        <span *ngFor="let item of list_dieu_khoan_footer">
+                            <a
+                                [routerLink]="[item.link]"
+                                style="text-decoration: none; color: #ffffff"
+                            >
+                                <span class="text-xl">{{ item.name }}</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <span
+                    class="text-2xl font-bold text-white uppercase"
+                    transloco="portal.ket_noi_voi_chung_toi"
+                ></span>
+                <hr
+                    style="
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                        border-bottom-width: 0px;
+                        border-top-width: 1px !important;
+                    "
+                />
+                <div class="flex items-center mt-4 mb-4 space-x-6">
+                    <a
+                        href="https://www.facebook.com/bachkhoaalumni"
+                        target="_blank"
+                    >
+                        <img
+                            src="/assets/images/portal/facebook_footer.png"
+                            style="height: 45px; width: auto"
+                        />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/company/hcmut/?viewAsMember=true"
+                        target="_blank"
+                    >
+                        <img
+                            src="/assets/images/portal/in_footer.png"
+                            alt=""
+                            style="height: 45px; width: auto"
+                        />
+                    </a>
+                    <a
+                        href="https://www.youtube.com/channel/UCkm4Eh03yk5muwDubA_Adxw/featured"
+                        target="_blank"
+                    >
+                        <img
+                            src="/assets/images/portal/youtube_footer.png"
+                            alt=""
+                            style="height: 45px; width: auto"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="relative flex flex-0 items-center w-full pt-2 pb-2 z-50 print:hidden background-color-web-primary"
+    >
+        <div
+            class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap w-full mx-auto px-6 sm:px-2"
+        >
+            <div align="center" class="flex-1 text-base text-white text-center">
+                <a
+                    *ngIf="!isScreenSmall"
+                    href="https://worldsoft.com.vn/"
+                    class="text-black"
+                >
+                    Copyright © {{ currentYear }} Software Corporation - All
+                    right reserved</a
+                >
+
+                <a
+                    *ngIf="isScreenSmall"
+                    href="https://worldsoft.com.vn/"
+                    class="text-black"
+                >
+                    Copyright © {{ currentYear }} Software Corporation <br />
+                    All right reserved</a
+                >
+            </div>
+        </div>
+    </div>
+</div>

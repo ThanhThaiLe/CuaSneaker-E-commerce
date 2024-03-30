@@ -1,0 +1,291 @@
+<div
+    class="flex flex-col flex-auto w-full max-w-3xl mx-auto h-fit overflow-y-visible mobile:mb-20"
+>
+    <!-- Header -->
+    <div
+        class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary"
+    >
+        <div class="text-lg font-medium" transloco="NAV.sys_banner"></div>
+    </div>
+    <!-- Card Form -->
+    <div class="w-full p-6 sm:p-8 space-y-1 overflow-y-auto">
+        <div class="flex flex-row justify-end space-x-2">
+            <button
+                class="rounded py-2 px-4 font-bold bg-gray-500 hover:bg-gray-600 items-center"
+                (click)="save()"
+            >
+                <p transloco="common.save" class="mb-0 text-white"></p>
+            </button>
+            <button
+                class="py-2 px-4 font-bold rounded bg-teal-500 hover:bg-teal-600 items-center"
+                (click)="close()"
+            >
+                <p transloco="common.close" class="mb-0 text-white"></p>
+            </button>
+        </div>
+
+        <div class="mb-2">
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_select
+                        [label]="'system.type'"
+                        [listData]="list_type_banner"
+                        [(model)]="record.db.id_type"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                        [keyError]="'db.id_type'"
+                    ></cm_select>
+                </div>
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.note"
+                        [label]="'system.note'"
+                        [keyError]="'db.note'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+            <div
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <cm_input
+                        [(model)]="record.db.link"
+                        [label]="'system.link'"
+                        [keyError]="'db.link'"
+                        [actionEnum]="actionEnum"
+                        [errorModel]="errorModel"
+                    ></cm_input>
+                </div>
+            </div>
+
+            <!-- hình ảnh web -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_web"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_web';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="fileInputWeb.click()"
+                        appDragDrop
+                        (onFileDropped)="DragAndDropProgressWeb($event)"
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_web == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_web != null"
+                            [src]="record.db.image_web"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #fileInputWeb
+                            (change)="ChoseFileImageWeb($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressWeb != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressWeb"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{ left: fileUploadProgressWeb + '%' }"
+                        >
+                            {{ fileUploadProgressWeb }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_web"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_web != null"
+                            [src]="record.db.image_web"
+                        />
+                    </div>
+                </div>
+            </div>
+            <!-- hình ảnh mobi -->
+            <div
+                *ngIf="actionEnum != 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_mobi"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div>
+                        <span
+                            style="color: red"
+                            *ngFor="
+                                let item of errorModel
+                                    | filter : 'key' : 'db.image_mobi';
+                                index as i
+                            "
+                        >
+                            (<span *ngFor="let msg of item.value">
+                                {{ msg | transloco }} </span
+                            >)
+                        </span>
+                    </div>
+
+                    <div
+                        class="uploadfilecontainer"
+                        (click)="fileInputMobi.click()"
+                        appDragDrop
+                        (onFileDropped)="DragAndDropProgressMobi($event)"
+                        align="center"
+                    >
+                        <h3
+                            *ngIf="record.db.image_mobi == null"
+                            style="margin: auto"
+                            transloco="common.chose_file"
+                        ></h3>
+                        <img
+                            style="height: auto !important; max-height: 100px"
+                            accept="image/*"
+                            *ngIf="record.db.image_mobi != null"
+                            [src]="record.db.image_mobi"
+                        />
+                        <input
+                            hidden
+                            type="file"
+                            #fileInputMobi
+                            (change)="ChoseFileImageMobi($event)"
+                            accept="*"
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style="position: relative; padding: 20px"
+                        *ngIf="fileUploadProgressMobi != -1"
+                    >
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="fileUploadProgressMobi"
+                            style="height: 2em"
+                            color="'Warn'"
+                        ></mat-progress-bar>
+                        <span
+                            style="position: absolute; top: 0.5em"
+                            [ngStyle]="{ left: fileUploadProgressMobi + '%' }"
+                        >
+                            {{ fileUploadProgressMobi }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="actionEnum == 3"
+                class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+            >
+                <div class="flex-1">
+                    <label
+                        transloco="system.image_mobi"
+                        style="
+                            padding: 25px;
+                            color: blue;
+                            font-size: 20px;
+                            font-weight: bold;
+                        "
+                    ></label>
+                    <br />
+                    <!-- (Tỷ lệ hình ảnh 16x9) -->
+                    <div class="uploadfilecontainer" align="center">
+                        <img
+                            class="w-full"
+                            style="max-height: 100%"
+                            *ngIf="record.db.image_mobi != null"
+                            [src]="record.db.image_mobi"
+                        />
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+
+        <div class="flex flex-row justify-end space-x-2">
+            <button
+                class="rounded py-2 px-4 font-bold bg-gray-500 hover:bg-gray-600 items-center"
+                (click)="save()"
+            >
+                <p transloco="common.save" class="mb-0 text-white"></p>
+            </button>
+            <button
+                class="py-2 px-4 font-bold rounded bg-teal-500 hover:bg-teal-600 items-center"
+                (click)="close()"
+            >
+                <p transloco="common.close" class="mb-0 text-white"></p>
+            </button>
+        </div>
+    </div>
+</div>

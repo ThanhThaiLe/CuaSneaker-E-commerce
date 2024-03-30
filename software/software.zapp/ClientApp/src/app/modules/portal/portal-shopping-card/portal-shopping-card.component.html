@@ -1,0 +1,272 @@
+<mat-progress-bar
+    *ngIf="pageLoading"
+    class="absolute top-0"
+    mode="indeterminate"
+></mat-progress-bar>
+<div
+    *ngIf="!pageLoading"
+    class="w-full mx-auto flex flex-col bg-white max-w-screen-xl md:pl-15 md:pr-15 p-4"
+>
+    <!-- Shopping card -->
+    <div
+        class="flex flex-col w-full"
+        data-aos="fade-right"
+        data-aos-once="true"
+    >
+        <div class="flex flex-col w-full max-w-screen-xl pr-6 pl-6 mx-auto">
+            <div class="flex flex-row">
+                <div class="flex flex-col md:w-9/12 mb-4 mt-4">
+                    <div
+                        class="flex flex-col flex-auto w-full max-w-xs sm:max-w-7xl mx-auto mb-4"
+                    >
+                        <ng-container
+                            *ngIf="
+                                this.list_product_card.length;
+                                else noCourses
+                            "
+                        >
+                            <div class="flex flex-col w-full mx-auto">
+                                <ng-container
+                                    *ngFor="
+                                        let item of list_product_card;
+                                        index as i;
+                                        trackBy: trackByFn
+                                    "
+                                >
+                                    <div
+                                        class="flex group hover:bg-gray-50 dark:hover:bg-black dark:hover:bg-opacity-5"
+                                    >
+                                        <!-- Product with a link -->
+                                        <ng-container *ngIf="item.link">
+                                            <!-- Router links -->
+                                            <ng-container>
+                                                <a
+                                                    *ngIf="item.link != ''"
+                                                    class="flex flex-auto p-2 cursor-pointer"
+                                                >
+                                                    <ng-container
+                                                        *ngTemplateOutlet="
+                                                            ProductContent
+                                                        "
+                                                    ></ng-container>
+                                                </a>
+                                                <!-- Actions -->
+                                                <div
+                                                    class="flex items-center justify-center mr-6"
+                                                >
+                                                    <button
+                                                        (click)="delete(item)"
+                                                        class="ml-1 -mr-4"
+                                                        mat-icon-button
+                                                    >
+                                                        <mat-icon
+                                                            class="icon-size-6"
+                                                            [svgIcon]="
+                                                                'heroicons_solid:x'
+                                                            "
+                                                        ></mat-icon>
+                                                    </button>
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                        <!-- Product without a link -->
+                                        <ng-container *ngIf="!item.link">
+                                            <div
+                                                class="flex flex-auto py-5 pl-6"
+                                            >
+                                                <ng-container
+                                                    *ngTemplateOutlet="
+                                                        ProductContent
+                                                    "
+                                                ></ng-container>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <ng-template #ProductContent>
+                                        <!-- Image -->
+                                        <ng-container
+                                            *ngIf="item.hinh_anh == null"
+                                        >
+                                            <img
+                                                [routerLink]="item.link"
+                                                class="flex-shrink-0 w-30 mr-4 overflow-hidden object-cover object-center"
+                                                src="assets/images/logo/sign-out.png"
+                                                [alt]="'item image'"
+                                            />
+                                        </ng-container>
+                                        <ng-container
+                                            *ngIf="item.hinh_anh != null"
+                                        >
+                                            <img
+                                                [routerLink]="item.link"
+                                                class="flex-shrink-0 w-30 mr-4 overflow-hidden object-cover object-center"
+                                                [src]="item.hinh_anh"
+                                                [alt]="'item param'"
+                                            />
+                                        </ng-container>
+                                        <!-- Title, description & time -->
+                                        <div
+                                            class="flex flex-col flex-auto text-primary-500"
+                                        >
+                                            <div
+                                                [routerLink]="item.link"
+                                                class="inset-y-0 left-0 py-2"
+                                            >
+                                                <span>
+                                                    {{
+                                                        item.ten_san_pham
+                                                    }}</span
+                                                >
+                                            </div>
+                                            <div
+                                                [routerLink]="item.link"
+                                                class="inset-y-0 left-0 py-2"
+                                            >
+                                                Size:
+                                                <span> {{ item.size }}</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="flex justify-between"
+                                                >
+                                                    <div
+                                                        class="p-2 flex items-center"
+                                                        (click)="
+                                                            plus_or_minus_product(
+                                                                i,
+                                                                2
+                                                            )
+                                                        "
+                                                    >
+                                                        <button
+                                                            class="h-8 w-8 border border-primary-300 bg-card"
+                                                        >
+                                                            <mat-icon
+                                                                class="icon-size-4 text-primary-500"
+                                                                svgIcon="heroicons_solid:minus"
+                                                            ></mat-icon>
+                                                        </button>
+                                                    </div>
+                                                    <div class="p-4">
+                                                        {{ item.so_luong }}
+                                                    </div>
+                                                    <div
+                                                        class="p-2 flex items-center"
+                                                        (click)="
+                                                            plus_or_minus_product(
+                                                                i,
+                                                                1
+                                                            )
+                                                        "
+                                                    >
+                                                        <button
+                                                            class="h-8 w-8 border border-primary-300 bg-card"
+                                                        >
+                                                            <mat-icon
+                                                                class="icon-size-4 text-primary-500"
+                                                                svgIcon="heroicons_solid:plus"
+                                                            ></mat-icon>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="flex justify-between"
+                                                    [routerLink]="item.link"
+                                                >
+                                                    <div class="p-4">
+                                                        {{
+                                                            changeCurrency(
+                                                                item.gia_ban
+                                                            )
+                                                        }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                        <!-- No courses -->
+                        <ng-template #noCourses>
+                            <div
+                                class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
+                            >
+                                <div
+                                    class="flex flex-0 items-center justify-center w-14 h-14 rounded-full bg-primary-100"
+                                >
+                                    <mat-icon
+                                        class="text-primary-500-700"
+                                        svgIcon="heroicons_solid:shopping-cart"
+                                    ></mat-icon>
+                                </div>
+                                <div
+                                    class="mt-5 text-md font-semibold tracking-tight"
+                                    transloco="portal.no_product_card"
+                                ></div>
+                                <div
+                                    class="w-full max-w-60 mt-1 text-md text-center text-secondary"
+                                    transloco="portal.note_product_card"
+                                ></div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="flex w-3/12 flex-col ml-4 mt-4">
+                    <div
+                        class="flex flex-col w-full mx-auto pb-4 bg-card bg-color-f3f3f3 shadow rounded-md sticky top-30 py-4 pr-4 pl-6"
+                    >
+                        <span
+                            transloco="portal.thong_tin_don_hang"
+                            class="text-2xl text-black text-center my-6 uppercase"
+                            style="font-weight: 700"
+                        ></span>
+                        <div
+                            class="flex flex-shrink-0 items-center justify-between border-t-2 border-primary border-dotted bg-card text-on-primary py-4"
+                        >
+                            <div class="w-full flex justify-start">
+                                <div
+                                    class="text-lg font-extrabold text-black leading-10"
+                                    transloco="portal.tong_tien"
+                                ></div>
+                            </div>
+                            <div class="w-full flex justify-end">
+                                <div
+                                    class="text-lg leading-10 font-bold text-red-500"
+                                >
+                                    {{ changeCurrency(price_sum) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-shrink-0 items-center justify-between border-t-2 border-primary border-dotted bg-card text-on-primary py-4"
+                        >
+                            <div class="w-full justify-start">
+                                <div class="text-lg text-black leading-4">
+                                    Phí vận chuyển sẽ được tính ở trang thanh
+                                    toán.
+                                </div>
+                                <br />
+                                <div class="text-lg text-black leading-4">
+                                    Bạn cũng có thể nhập mã giảm giá ở trang
+                                    thanh toán.
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-shrink-0 items-center justify-between border-t-2 border-primary border-dotted bg-card text-on-primary py-4"
+                        >
+                            <button
+                                (click)="go_to_payment()"
+                                type="submit"
+                                class="flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            >
+                                Thanh toán
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

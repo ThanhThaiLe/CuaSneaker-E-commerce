@@ -1,0 +1,45 @@
+<div
+    class="flex flex-col w-full"
+    *ngIf="listBannerProduct.length > 0"
+    data-aos="fade-right"
+    data-aos-once="true"
+>
+    <div
+        class="flex flex-col w-full flex-auto min-w-0 max-w-screen-xl mx-auto pl-20 pr-20"
+    >
+        <swiper
+            *ngIf="listBannerProduct.length > 0"
+            [slidesPerView]="3"
+            [centeredSlides]="true"
+            [loop]="true"
+            [spaceBetween]="10"
+            [pagination]="{
+                clickable: true
+            }"
+            [autoplay]="{ delay: 3000 }"
+            class="mySwiperHinhAnh"
+        >
+            <ng-template
+                swiperSlide
+                *ngFor="let item of listBannerProduct"
+                class="duration-300 ease-in-out"
+            >
+                <div
+                    class="flex-none bg-card rounded-lg shadow w-full mx-auto m-1"
+                >
+                    <div class="flex flex-col w-full">
+                        <div
+                            class="relative image-inside w-full cursor-pointer"
+                        >
+                            <img
+                                class="object-contain bg-card rounded-lg shadow"
+                                src="{{ item.image_web }}"
+                            />
+                        </div>
+                        <!-- Course title & description -->
+                    </div>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+</div>

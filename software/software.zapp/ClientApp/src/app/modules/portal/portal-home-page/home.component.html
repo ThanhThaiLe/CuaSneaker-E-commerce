@@ -1,0 +1,30 @@
+<mat-progress-bar
+    *ngIf="pageLoading"
+    class="absolute top-0"
+    mode="indeterminate"
+></mat-progress-bar>
+<div class="flex flex-col flex-auto min-w-0" *ngIf="!pageLoading">
+    <!-- ===== Slider Start ===== -->
+    <app-slider-main></app-slider-main>
+    <!-- <app-flash-sale *ngIf="!isScreenSmall && !isScreenMobi"></app-flash-sale>
+    <app-sneaker-man *ngIf="!isScreenSmall && !isScreenMobi"></app-sneaker-man>
+    <app-sneaker-woman
+        *ngIf="!isScreenSmall && !isScreenMobi"
+    ></app-sneaker-woman> -->
+    <!-- ===== Slider End ===== -->
+    <!-- ===== Blog Grid Start ===== -->
+    <app-gird-products></app-gird-products>
+    <!-- ===== Blog Grid End ===== -->
+    <!-- ===== Slider Start ===== -->
+    <app-slider-second></app-slider-second>
+    <!-- ===== Slider End ===== -->
+    <!-- ===== Nhãn hiệu Start ===== -->
+    <app-nhan-hieu></app-nhan-hieu>
+    <!-- ===== Nhãn hiệu End ===== -->
+    <!-- ===== Số liệu Start ===== -->
+    <app-data-buy-products></app-data-buy-products>
+    <!-- ===== Số liệu End ===== -->
+    <!-- ===== leadership Start ===== -->
+    <!-- <app-leader-ship></app-leader-ship> -->
+    <!-- ===== leadership End ===== -->
+</div>

@@ -1,0 +1,157 @@
+<mat-progress-bar
+    *ngIf="pageLoading"
+    class="absolute top-0"
+    mode="indeterminate"
+></mat-progress-bar>
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto">
+    <!-- MAIN -->
+    <div class="flex-auto p-3 sm:pt-3 sm:p-10">
+        <!-- CONTENT -->
+        <div class="rounded-2xl">
+            <h1
+                mat-dialog-title
+                class="dark:text-white"
+                transloco="NAV.sys_banner"
+            ></h1>
+            <mat-card class="rounded-2xl py-6 px-6 shadow">
+                <div
+                    class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+                >
+                    <div class="flex-1">
+                        <cm_select
+                            [label]="'system.type_banner'"
+                            [listData]="list_type_banner"
+                            [callbackChange]="rerender.bind(this)"
+                            [(model)]="filter.id_type"
+                        ></cm_select>
+                    </div>
+                    <div class="flex-1">
+                        <cm_select
+                            [label]="'common.use_status'"
+                            [listData]="list_status_del"
+                            [callbackChange]="rerender.bind(this)"
+                            [(model)]="filter.status_del"
+                        ></cm_select>
+                    </div>
+                </div>
+                <div align="right" class="space-x-2">
+                    <button
+                        class="rounded py-2 px-4 font-bold bg-green-700 hover:bg-green-700 items-center"
+                        (click)="openDialogAdd()"
+                    >
+                        <p transloco="common.add" class="mb-0 text-white"></p>
+                    </button>
+                </div>
+            </mat-card>
+            <br />
+            <table
+                datatable
+                [dtOptions]="dtOptions"
+                style="width: 100% !important"
+                class="w-full cell-border myTable hover"
+            >
+                <thead>
+                    <tr>
+                        <th style="min-width: 50px"></th>
+                        <th style="min-width: 50px" transloco="system.stt"></th>
+                        <th transloco="system.type"></th>
+                        <th transloco="system.image_web"></th>
+                        <th transloco="system.image_mobi"></th>
+                        <th transloco="system.link"></th>
+                        <th transloco="system.note"></th>
+                        <th transloco="system.update_by"></th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="listData?.length != 0">
+                    <tr *ngFor="let item of listData; index as i">
+                        <td>
+                            <button
+                                mat-icon-button
+                                [matMenuTriggerFor]="appMenu"
+                            >
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #appMenu="matMenu">
+                                <button
+                                    mat-menu-item
+                                    (click)="openDialogEdit(item, i)"
+                                    transloco="common.edit"
+                                ></button>
+                                <button
+                                    mat-menu-item
+                                    (click)="openDialogDetail(item, i)"
+                                    transloco="common.detail"
+                                ></button>
+                                <button
+                                    *ngIf="item.db.status_del == 2"
+                                    mat-menu-item
+                                    (click)="revertStatus(item, 1)"
+                                    transloco="common.revert_use"
+                                ></button>
+                                <button
+                                    *ngIf="item.db.status_del == 1"
+                                    mat-menu-item
+                                    (click)="revertStatus(item, 2)"
+                                    transloco="common.no_user"
+                                ></button>
+                            </mat-menu>
+                        </td>
+                        <td style="text-align: center">{{ i + 1 }}</td>
+                        <td>
+                            <span
+                                *ngIf="item.db.id_type == '1'"
+                                transloco="system.trang_chu"
+                            ></span>
+                            <span
+                                *ngIf="item.db.id_type == '2'"
+                                transloco="system.san_pham"
+                            ></span>
+                        </td>
+                        <td>
+                            <img
+                                style="width: 70px"
+                                [src]="item.db.image_web"
+                                [alt]="item.db.note"
+                                srcset=""
+                            />
+                        </td>
+                        <td>
+                            <img
+                                style="width: 70px"
+                                [src]="item.db.image_mobi"
+                                [alt]="item.db.note"
+                                srcset=""
+                            />
+                        </td>
+                        <td>
+                            <a href="{{ item.db.link }}" target="_blank">
+                                {{ item.db.link }}
+                            </a>
+                        </td>
+
+                        <td>{{ item.db.note }}</td>
+                        <td>
+                            {{ item.update_name }} <br />{{
+                                item.db.update_date | date : "dd/MM/yyyy"
+                            }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="listData?.length == 0">
+                    <tr class="h-40">
+                        <td colspan="100" class="no-data-available">
+                            <nz-empty
+                                nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+                                [nzNotFoundContent]="contentNoData"
+                            >
+                                <ng-template #contentNoData>
+                                    <span transloco="common.no_data"></span>
+                                </ng-template>
+                            </nz-empty>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

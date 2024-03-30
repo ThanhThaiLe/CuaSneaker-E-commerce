@@ -1,0 +1,374 @@
+<mat-progress-bar
+    *ngIf="pageLoading"
+    class="absolute top-0"
+    mode="indeterminate"
+></mat-progress-bar>
+
+<div class="flex flex-col flex-auto min-w-0" *ngIf="!pageLoading">
+    <!-- Banner -->
+    <!-- <div class="w-full mx-auto flex flex-col bg-white">
+        <div
+            data-aos="fade-right"
+            data-aos-once="true"
+            class="flex flex-col w-full mx-auto"
+        >
+            <swiper
+                [slidesPerView]="1"
+                [navigation]="true"
+                [zoom]="true"
+                [autoplay]="{ delay: 3000 }"
+                [pagination]="{
+                    clickable: true
+                }"
+                class="mySwiperBanner"
+            >
+                <ng-template swiperSlide *ngFor="let item of listBannerHome">
+                    <div class="flex-none mx-auto">
+                        <div class="flex flex-col">
+                            <div class="relative cursor-pointer">
+                                <img
+                                    class="h-auto w-full"
+                                    src="{{ item.image_web }}"
+                                    alt="{{ item.image_mobi }}"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </swiper>
+        </div>
+    </div> -->
+    <app-slider-main></app-slider-main>
+    <!-- Product -->
+    <div class="flex flex-row p-6 sm:p-10">
+        <div
+            class="flex w-1/5 flex-col ml-4 mt-9"
+            *ngIf="!isScreenSmall && !isScreenMobi"
+        >
+            <div
+                class="flex flex-col w-full mx-auto pb-4 bg-card bg-color-f3f3f3 shadow rounded-md sticky top-30"
+            >
+                <span
+                    class="text-2xl text-black text-center my-6 uppercase"
+                    style="font-weight: 700"
+                    >Sản phẩm nổi bậc</span
+                >
+                <div class="flex flex-col w-full">
+                    <div *ngFor="let item of list_san_pham | slice : 0 : 3">
+                        <div class="flex flex-row w-full p-4">
+                            <div class="w-1/3">
+                                <img
+                                    class="h-full w-full object-cover"
+                                    src="{{ item.hinh_anh }}"
+                                />
+                            </div>
+                            <div class="w-2/3">
+                                <div class="pl-2">
+                                    <span
+                                        class="text-lg font-semibold leading-7 text-title-color text-line-clamp-2"
+                                        style="max-height: 75px"
+                                        >{{ item.ma_san_pham }}</span
+                                    >
+                                    <br />
+                                    <span
+                                        class="text-lg font-semibold leading-7 text-title-color text-line-clamp-2"
+                                        style="max-height: 75px"
+                                        >{{ item.nhan_hieu }}</span
+                                    >
+                                    <br />
+                                    <span
+                                        class="text-lg font-semibold leading-7 text-title-color text-line-clamp-2"
+                                        style="max-height: 75px"
+                                        >{{ item.ten_san_pham }}</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:w-4/5 mb-4 mt-4">
+            <div>
+                <div
+                    class="inset-0 flex flex-col min-w-0 overflow-y-auto"
+                    cdkScrollable
+                >
+                    <div class="flex flex-auto">
+                        <div
+                            class="flex flex-col flex-auto w-full max-w-xs sm:max-w-7xl mx-auto mb-4"
+                        >
+                            <div
+                                class="flex flex-col sm:flex-row items-center justify-between w-full max-w-xs sm:max-w-none"
+                            >
+                                <mat-form-field
+                                    class="fuse-mat-no-subscript w-full sm:w-36"
+                                >
+                                    <mat-select
+                                        [value]="'all'"
+                                        (selectionChange)="
+                                            filterByCategory($event)
+                                        "
+                                    >
+                                        <mat-option [value]="'all'"
+                                            >All</mat-option
+                                        >
+                                        <ng-container
+                                            *ngFor="
+                                                let category of list_loai_san_pham;
+                                                trackBy: trackByFn
+                                            "
+                                        >
+                                            <mat-option [value]="category.id">{{
+                                                category.name
+                                            }}</mat-option>
+                                        </ng-container>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    class="fuse-mat-no-subscript w-full sm:w-72 mt-4 sm:mt-0 sm:ml-4"
+                                    [floatLabel]="'always'"
+                                >
+                                    <mat-icon
+                                        matPrefix
+                                        class="icon-size-5"
+                                        [svgIcon]="'heroicons_solid:search'"
+                                    ></mat-icon>
+                                    <input
+                                        (input)="filterByQuery(query.value)"
+                                        placeholder="Search by title or description"
+                                        matInput
+                                        #query
+                                    />
+                                </mat-form-field>
+                                <div class="mt-8 sm:mt-0 sm:ml-auto">
+                                    <mat-slide-toggle
+                                        *ngIf="!isScreenSmall"
+                                        class="mt-8 sm:mt-0 sm:ml-auto"
+                                        [color]="'primary'"
+                                        (change)="toggleCompleted($event)"
+                                    >
+                                        Sản phẩm nổi bậc
+                                    </mat-slide-toggle>
+                                    <mat-slide-toggle
+                                        *ngIf="!isScreenSmall"
+                                        class="mt-8 sm:mt-0 sm:ml-4"
+                                        [color]="'primary'"
+                                        (change)="
+                                            toggleCompletedGiamGia($event)
+                                        "
+                                    >
+                                        Sản phẩm giảm giá
+                                    </mat-slide-toggle>
+                                </div>
+                            </div>
+                            <ng-container
+                                *ngIf="
+                                    this.list_san_pham.length;
+                                    else noCourses
+                                "
+                            >
+                                <div
+                                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 sm:mt-10"
+                                >
+                                    <ng-container
+                                        *ngFor="
+                                            let course of list_san_pham
+                                                | slice : 0 : 16;
+                                            trackBy: trackByFn
+                                        "
+                                    >
+                                        <div
+                                            (click)="go_to_san_pham(course.id)"
+                                            class="flex flex-col h-96 shadow rounded-2xl overflow-hidden bg-card"
+                                        >
+                                            <div class="flex flex-col p-6">
+                                                <div
+                                                    class="flex items-center justify-between"
+                                                >
+                                                    <ng-container
+                                                        *ngIf="
+                                                            course.id_loai_san_pham
+                                                                | fuseFindByKey
+                                                                    : 'id'
+                                                                    : list_loai_san_pham as category
+                                                        "
+                                                    >
+                                                        <div
+                                                            class="py-0.5 px-3 rounded-full text-sm font-semibold"
+                                                            [ngClass]="{
+                                                                'text-orange-800 bg-blue-100 dark:text-orange-50 dark:bg-blue-500':
+                                                                    category.name ===
+                                                                    'HOODIE',
+                                                                'text-green-800 bg-green-100 dark:text-green-50 dark:bg-green-500':
+                                                                    category.name ===
+                                                                    'POLO',
+                                                                'text-pink-800 bg-pink-100 dark:text-pink-50 dark:bg-pink-500':
+                                                                    category.name ===
+                                                                    'SHORT',
+                                                                'text-amber-800 bg-amber-100 dark:text-amber-50 dark:bg-amber-500':
+                                                                    category.name ===
+                                                                    'T-SHIRT'
+                                                            }"
+                                                        >
+                                                            {{ category.name }}
+                                                        </div>
+                                                    </ng-container>
+                                                    <div
+                                                        class="flex items-center"
+                                                    ></div>
+                                                </div>
+                                                <div class="h-50 my-6">
+                                                    <img
+                                                        src="{{
+                                                            course.hinh_anh
+                                                        }}"
+                                                        alt=""
+                                                        srcset=""
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="flex items-center leading-5 text-md text-secondary"
+                                                >
+                                                    <mat-icon
+                                                        class="icon-size-5 text-hint"
+                                                        [svgIcon]="
+                                                            'heroicons_solid:clock'
+                                                        "
+                                                    ></mat-icon>
+                                                    <div class="ml-1.5">
+                                                        {{ course.ma_san_pham }}
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="flex items-center mt-2 leading-5 text-md text-secondary"
+                                                >
+                                                    <mat-icon
+                                                        class="icon-size-5 text-hint"
+                                                        [svgIcon]="
+                                                            'heroicons_solid:academic-cap'
+                                                        "
+                                                    ></mat-icon>
+                                                    <div class="ml-1.5">
+                                                        {{
+                                                            course.ten_san_pham
+                                                        }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+
+                            <!-- No courses -->
+                            <ng-template #noCourses>
+                                <div
+                                    class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
+                                >
+                                    <mat-icon
+                                        class="icon-size-20"
+                                        [svgIcon]="'iconsmind:file_search'"
+                                    ></mat-icon>
+                                    <div
+                                        class="mt-6 text-2xl font-semibold tracking-tight text-secondary"
+                                    >
+                                        No courses found!
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="mx-auto md:pt-12 pt-6" *ngIf="page_list.length > 0">
+        <ul class="inline-flex items-center -space-x-px ul_paging">
+            <li *ngIf="page != 0">
+                <a
+                    (click)="load_san_pham_moi_nhat(page - 1)"
+                    class="p-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                    Trước
+                </a>
+            </li>
+            <li>
+                <a
+                    *ngIf="page != 0"
+                    (click)="load_san_pham_moi_nhat(0)"
+                    class="p-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                    {{ 1 }}
+                </a>
+                <a
+                    *ngIf="page == 0"
+                    aria-current="page"
+                    class="z-10 p-3 leading-tight text-orange-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-orange-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                >
+                    {{ 1 }}
+                </a>
+            </li>
+            <li *ngIf="page > 2">
+                <a
+                    class="p-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                    ..
+                </a>
+            </li>
+            <ng-container *ngFor="let item of page_list; let i = index">
+                <!-- <li> -->
+                <li *ngIf="page - item >= -1 && page - item <= 1">
+                    <a
+                        *ngIf="item != page"
+                        (click)="load_san_pham_moi_nhat(item)"
+                        class="p-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                    >
+                        {{ item + 1 }}
+                    </a>
+                    <a
+                        *ngIf="item == page"
+                        (click)="load_san_pham_moi_nhat(item)"
+                        aria-current="page"
+                        class="z-10 p-3 leading-tight text-orange-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-orange-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                    >
+                        {{ item + 1 }}
+                    </a>
+                </li>
+            </ng-container>
+
+            <li *ngIf="total_page - page >= 3">
+                <a
+                    class="p-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                    ...
+                </a>
+            </li>
+            <li>
+                <a
+                    (click)="load_san_pham_moi_nhat(total_page)"
+                    *ngIf="total_page != page"
+                    class="p-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                    {{ total_page + 1 }}
+                </a>
+                <a
+                    aria-current="page"
+                    *ngIf="total_page == page"
+                    class="z-10 p-3 leading-tight text-orange-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-orange-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                >
+                    {{ total_page + 1 }}
+                </a>
+            </li>
+            <li *ngIf="page != total_page">
+                <a
+                    (click)="load_san_pham_moi_nhat(page + 1)"
+                    class="p-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                >
+                    Sau
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

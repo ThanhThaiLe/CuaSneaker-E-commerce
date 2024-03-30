@@ -1,0 +1,32 @@
+<div
+    class="w-full mx-auto flex flex-col bg-white"
+    data-aos="fade-right"
+    data-aos-once="true"
+>
+    <div class="flex flex-col w-full mx-auto">
+        <swiper
+            [slidesPerView]="1"
+            [navigation]="true"
+            [zoom]="true"
+            [autoplay]="{ delay: 3000 }"
+            [pagination]="{
+                clickable: true
+            }"
+            class="mySwiperBanner"
+        >
+            <ng-template swiperSlide *ngFor="let item of listBannerHome">
+                <div class="flex-none mx-auto">
+                    <div class="flex flex-col">
+                        <div class="relative cursor-pointer">
+                            <img
+                                class="h-auto w-full"
+                                src="{{ item.image_web }}"
+                                alt="{{ item.image_mobi }}"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+</div>

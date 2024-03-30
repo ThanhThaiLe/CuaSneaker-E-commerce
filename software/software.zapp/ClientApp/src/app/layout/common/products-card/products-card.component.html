@@ -1,0 +1,253 @@
+<!-- list_product_cards toggle -->
+<button mat-icon-button (click)="openPanel()" #list_product_cardOrigin>
+    <ng-container *ngIf="productCount > 0">
+        <span
+            class="absolute top-0 right-0 left-0 flex items-center justify-center h-3"
+        >
+            <span
+                class="flex items-center justify-center flex-shrink-0 min-w-4 h-4 px-1 ml-4 mt-2.5 rounded-full bg-orange-600 text-indigo-50 text-xs font-medium"
+            >
+                {{ productCount }}
+            </span>
+        </span>
+    </ng-container>
+    <mat-icon
+        svgIcon="heroicons_solid:shopping-cart"
+        class="text-base text-black mr-1"
+    ></mat-icon>
+</button>
+<!-- list_product_cards panel -->
+<ng-template #list_product_cardPanel>
+    <div
+        class="fixed inset-0 sm:static sm:inset-auto flex flex-col sm:min-w-90 sm:w-140 sm:rounded-2xl overflow-hidden shadow-lg"
+    >
+        <!-- Header -->
+        <div
+            class="flex flex-shrink-0 items-center py-4 pr-4 pl-6 bg-orange-600 text-on-primary"
+        >
+            <div class="sm:hidden -ml-1 mr-3">
+                <button mat-icon-button (click)="closePanel()">
+                    <mat-icon
+                        class="icon-size-5 text-current"
+                        [svgIcon]="'heroicons_solid:x'"
+                    ></mat-icon>
+                </button>
+            </div>
+            <div class="w-full flex justify-between">
+                <div
+                    class="text-lg font-medium leading-10"
+                    transloco="portal.gio_hang"
+                ></div>
+            </div>
+        </div>
+        <div
+            class="justify-between items-center"
+            style="height: 100%; width: 100%"
+            *ngIf="loading == false"
+        >
+            <div class="flex justify-between items-center py-32">
+                <mat-progress-spinner
+                    class="flex flex-row max-w-screen-xl mx-auto md:pl-20 md:pr-20"
+                    [diameter]="50"
+                    [mode]="'indeterminate'"
+                >
+                </mat-progress-spinner>
+            </div>
+        </div>
+        <!-- Content -->
+        <div
+            *ngIf="loading == true"
+            class="relative flex flex-col flex-auto sm:max-h-120 divide-y overflow-y-auto bg-card"
+        >
+            <!-- list_product_cards -->
+            <ng-container
+                *ngFor="
+                    let item of list_product_card;
+                    index as i;
+                    trackBy: trackByFn
+                "
+            >
+                <div
+                    class="flex group hover:bg-gray-50 dark:hover:bg-black dark:hover:bg-opacity-5"
+                >
+                    <!-- Product with a link -->
+                    <ng-container *ngIf="item.link">
+                        <!-- Router links -->
+                        <ng-container>
+                            <a
+                                *ngIf="item.link != ''"
+                                class="flex flex-auto p-2 cursor-pointer"
+                            >
+                                <ng-container
+                                    *ngTemplateOutlet="ProductContent"
+                                ></ng-container>
+                            </a>
+                            <!-- Actions -->
+                            <div class="flex items-center justify-center mr-6">
+                                <button
+                                    (click)="delete(item)"
+                                    class="ml-1 -mr-4"
+                                    mat-icon-button
+                                >
+                                    <mat-icon
+                                        class="icon-size-6"
+                                        [svgIcon]="'heroicons_solid:x'"
+                                    ></mat-icon>
+                                </button>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                    <!-- Product without a link -->
+                    <ng-container *ngIf="!item.link">
+                        <div class="flex flex-auto py-5 pl-6">
+                            <ng-container
+                                *ngTemplateOutlet="ProductContent"
+                            ></ng-container>
+                        </div>
+                    </ng-container>
+                </div>
+                <ng-template #ProductContent>
+                    <!-- Image -->
+                    <ng-container *ngIf="item.hinh_anh == null">
+                        <img
+                            [routerLink]="item.link"
+                            class="flex-shrink-0 w-30 mr-4 overflow-hidden object-cover object-center"
+                            src="assets/images/logo/sign-out.png"
+                            [alt]="'item image'"
+                        />
+                    </ng-container>
+                    <ng-container *ngIf="item.hinh_anh != null">
+                        <img
+                            [routerLink]="item.link"
+                            class="flex-shrink-0 w-30 mr-4 overflow-hidden object-cover object-center"
+                            [src]="item.hinh_anh"
+                            [alt]="'item param'"
+                        />
+                    </ng-container>
+                    <!-- Title, description & time -->
+                    <div class="flex flex-col flex-auto text-primary-500">
+                        <div
+                            [routerLink]="item.link"
+                            class="inset-y-0 left-0 py-2"
+                        >
+                            <span> {{ item.ten_san_pham }}</span>
+                        </div>
+                        <div
+                            [routerLink]="item.link"
+                            class="inset-y-0 left-0 py-2"
+                        >
+                            Size: <span> {{ item.size }}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="flex justify-between">
+                                <div
+                                    class="p-2 flex items-center"
+                                    (click)="plus_or_minus_product(i, 2)"
+                                >
+                                    <button
+                                        class="h-8 w-8 border border-primary-300 bg-card"
+                                    >
+                                        <mat-icon
+                                            class="icon-size-4 text-primary-500"
+                                            svgIcon="heroicons_solid:minus"
+                                        ></mat-icon>
+                                    </button>
+                                </div>
+                                <div class="p-4">{{ item.so_luong }}</div>
+                                <div
+                                    class="p-2 flex items-center"
+                                    (click)="plus_or_minus_product(i, 1)"
+                                >
+                                    <button
+                                        class="h-8 w-8 border border-primary-300 bg-card"
+                                    >
+                                        <mat-icon
+                                            class="icon-size-4 text-primary-500"
+                                            svgIcon="heroicons_solid:plus"
+                                        ></mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                            <div
+                                class="flex justify-between"
+                                [routerLink]="item.link"
+                            >
+                                <div class="p-4">
+                                    {{ changeCurrency(item.gia_ban) }}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="inset-y-0 left-0 py-2">
+                            <span> {{ item.color }}</span>
+                        </div> -->
+                    </div>
+                </ng-template>
+            </ng-container>
+            <!-- No list_product_cards -->
+            <ng-container
+                *ngIf="!list_product_card || !list_product_card.length"
+            >
+                <div
+                    class="flex flex-col flex-auto items-center justify-center sm:justify-start py-12 px-8"
+                >
+                    <div
+                        class="flex flex-0 items-center justify-center w-14 h-14 rounded-full bg-primary-100"
+                    >
+                        <mat-icon
+                            class="text-primary-500-700"
+                            svgIcon="heroicons_solid:shopping-cart"
+                        ></mat-icon>
+                    </div>
+                    <div
+                        class="mt-5 text-md font-semibold tracking-tight"
+                        transloco="portal.no_product_card"
+                    ></div>
+                    <div
+                        class="w-full max-w-60 mt-1 text-md text-center text-secondary"
+                        transloco="portal.note_product_card"
+                    ></div>
+                </div>
+            </ng-container>
+        </div>
+        <!-- Footer -->
+        <div
+            class="flex flex-shrink-0 items-center justify-between border-t-2 border-black py-4 pr-4 pl-6 bg-card text-on-primary"
+        >
+            <div class="w-full flex justify-start">
+                <div
+                    class="text-lg font-extrabold text-black leading-10"
+                    transloco="portal.tong_tien"
+                ></div>
+            </div>
+            <div class="w-full flex justify-end">
+                <div class="text-lg leading-10 font-bold text-red-500">
+                    {{ changeCurrency(price_sum) }}
+                </div>
+            </div>
+        </div>
+        <div
+            class="flex flex-shrink-0 items-center justify-between border-t-2 border-black py-4 pr-4 pl-6 bg-card text-on-primary"
+        >
+            <div class="w-full flex justify-start">
+                <div class="text-lg font-medium leading-10">
+                    <button
+                        (click)="go_to_shopingcard()"
+                        class="text-black hover:text-white rounded py-2 px-4 font-bold transition ease-in-out delay-150 bg-white border-2 border-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 item-center"
+                    >
+                        <span transloco="portal.view_card" class="mb-0"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="w-full flex justify-end">
+                <div class="text-lg font-medium leading-10">
+                    <button
+                        (click)="go_to_payment()"
+                        class="text-black hover:text-white rounded py-2 px-4 font-bold transition ease-in-out delay-150 bg-white border-2 border-orange-500 hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-300 item-center"
+                    >
+                        <span transloco="portal.payment" class="mb-0"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

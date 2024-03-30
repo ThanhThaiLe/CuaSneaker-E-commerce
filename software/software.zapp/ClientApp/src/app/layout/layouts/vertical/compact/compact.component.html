@@ -1,0 +1,95 @@
+<!-- Navigation -->
+<fuse-vertical-navigation
+    class="dark bg-gray-900 print:hidden"
+    [appearance]="'compact'"
+    [mode]="isScreenSmall ? 'over' : 'side'"
+    [name]="'mainNavigation'"
+    [navigation]="data.navigation.compact"
+    [opened]="!isScreenSmall"
+>
+    <!-- Navigation header hook -->
+    <ng-container fuseVerticalNavigationContentHeader>
+        <!-- Logo -->
+        <div class="flex items-center justify-center h-20 mt-3 mb-4 flex-col">
+            <img
+                class="w-10"
+                src="assets/images/logo/logo.jpg"
+                style="image-rendering: -webkit-optimize-contrast"
+                alt="Logo image"
+            />
+            <span class="font-bold">CuaSneaker</span>
+        </div>
+    </ng-container>
+</fuse-vertical-navigation>
+
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0">
+    <!-- Header -->
+    <div
+        class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden"
+    >
+        <button mat-icon-button (click)="toggleNavigation('mainNavigation')">
+            <mat-icon [svgIcon]="'heroicons_solid:menu'"></mat-icon>
+        </button>
+
+        <div class="flex items-center pl-2 ml-auto space-x-2">
+            <language class="ml-auto"></language>
+            <!-- <shortcuts [shortcuts]="data.shortcuts"></shortcuts>
+            <messages [messages]="data.messages"></messages> -->
+            <user-menu
+                [user_login]="user"
+                [isScreenSmall]="isScreenSmall"
+            ></user-menu>
+            <a
+                mat-button
+                *ngIf="user.type == 1"
+                class="text-black"
+                style="padding: 0 10px !important"
+                [routerLink]="'/homepage-index'"
+            >
+                <mat-icon
+                    [svgIcon]="'heroicons_solid:cog'"
+                    class="text-base text-black mr-1"
+                ></mat-icon>
+                <span class="text-base" transloco="common.home_page"></span
+            ></a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-col flex-auto">
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
+        <router-outlet *ngIf="true"></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <div
+        class="relative flex flex-0 items-center w-full h-10 sm:h-10 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden"
+    >
+        <!-- <div class="relative flex flex-0 items-center justify-start w-full h-14 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden"> -->
+        <div
+            class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap w-full max-w-screen-xl mx-auto px-6 sm:px-2"
+        >
+            <div align="right" class="flex-1 text-base text-center">
+                <a
+                    *ngIf="!isScreenSmall"
+                    href="https://worldsoft.com.vn/"
+                    class="text-black"
+                >
+                    Copyright © {{ currentYear }} Software Corporation - All
+                    right reserved</a
+                >
+
+                <a
+                    *ngIf="isScreenSmall"
+                    href="https://worldsoft.com.vn/"
+                    class="text-black"
+                >
+                    Copyright © {{ currentYear }} Software Corporation <br />
+                    All right reserved</a
+                >
+            </div>
+        </div>
+    </div>
+</div>

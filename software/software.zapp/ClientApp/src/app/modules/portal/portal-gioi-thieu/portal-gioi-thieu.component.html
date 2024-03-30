@@ -1,0 +1,10 @@
+<mat-progress-bar
+    *ngIf="pageLoading"
+    class="absolute top-0"
+    mode="indeterminate"
+></mat-progress-bar>
+<div class="flex flex-col flex-auto min-w-0" *ngIf="!pageLoading">
+    <!-- ===== leadership Start ===== -->
+    <app-leader-ship></app-leader-ship>
+    <!-- ===== leadership End ===== -->
+</div>

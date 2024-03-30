@@ -1,0 +1,378 @@
+<!-- Navigation -->
+<ng-container *ngIf="isScreenSmall">
+    <fuse-vertical-navigation
+        class="dark bg-gray-900 print:hidden"
+        [mode]="'over'"
+        [name]="'mainNavigation'"
+        [navigation]="navigation.default"
+        [opened]="false"
+    >
+        <!-- Navigation header hook -->
+        <ng-container fuseVerticalNavigationContentHeader>
+            <!-- Logo -->
+            <div class="flex items-center h-20 pt-6 px-8 justify-center">
+                <img
+                    class="h-15 w-auto"
+                    [src]="thong_tin_website.image_logo"
+                    style="image-rendering: -webkit-optimize-contrast"
+                    alt="Logo image"
+                />
+            </div>
+        </ng-container>
+    </fuse-vertical-navigation>
+</ng-container>
+
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0 bg-white">
+    <div
+        class="scroll-to-top"
+        [ngClass]="{ 'show-scrollTop': windowScrolled }"
+        style="z-index: 9999999"
+    >
+        <button
+            mat-raised-button
+            class="bg-orange-600 animate-bounce"
+            style="min-width: 35px; width: 35px"
+            (click)="scrollToTop()"
+        >
+            <span>
+                <mat-icon
+                    style="color: white !important; vertical-align: middle"
+                    >arrow_upward</mat-icon
+                >
+            </span>
+        </button>
+    </div>
+    <!-- Header -->
+    <div
+        class="flex items-center w-full z-50 shadow bg-card print:hidden transition duration-700 background-color-web-primary"
+        style="height: 38px !important"
+    >
+        <div class="w-full max-w-screen-xl flex md:pr-16 z-50 mx-auto">
+            <div class="w-full flex z-50" *ngIf="is_login == false">
+                <language class="ml-auto"></language>
+                <a
+                    mat-button
+                    class=""
+                    style="padding: 0 10px !important"
+                    [routerLink]="'/sign-in'"
+                >
+                    <mat-icon class="text-white mr-1 text-base"
+                        >account_circle</mat-icon
+                    >
+                    <span
+                        class="text-white text-base"
+                        transloco="common.signin"
+                    ></span>
+                </a>
+
+                <a
+                    mat-button
+                    [routerLink]="'/sign-up'"
+                    style="padding: 0 10px !important"
+                >
+                    <mat-icon class="text-white mr-1 text-base"
+                        >person_add</mat-icon
+                    >
+                    <span
+                        class="text-base text-white"
+                        transloco="common.signup"
+                    ></span>
+                </a>
+            </div>
+
+            <div class="w-full flex z-50" *ngIf="is_login == true">
+                <language class="ml-auto"></language>
+                <user-menu [user_login]="user"></user-menu>
+                <!-- <notifications></notifications> -->
+                <products-card></products-card>
+                <a
+                    mat-button
+                    *ngIf="user.type == 1"
+                    class="text-black"
+                    style="padding: 0 10px !important"
+                    (click)="go_to_home()"
+                >
+                    <mat-icon
+                        [svgIcon]="'heroicons_solid:cog'"
+                        class="text-base text-black mr-1"
+                    ></mat-icon>
+                    <span class="text-base" transloco="common.management"></span
+                ></a>
+            </div>
+        </div>
+    </div>
+    <div
+        class="flex flex-0 items-center w-full md:px-4 z-50 shadow bg-card dark:bg-transparent print:hidden"
+        [ngClass]="{
+            'fixed top-0': windowScrolled,
+            height_header_web: !isScreenSmall,
+            height_header_mobile: isScreenSmall
+        }"
+    >
+        <div
+            class="w-full max-w-screen-xl flex flex-0 items-center h-16 sm:h-16 px-2 md:px-15 z-50 mx-auto"
+        >
+            <ng-container *ngIf="!isScreenSmall">
+                <!-- Logo -->
+                <!-- Horizontal navigation -->
+                <div class="flex h-full items-center">
+                    <a class="h-full" (click)="go_to_homepage()">
+                        <img
+                            class="flex mx-auto h-full"
+                            [src]="thong_tin_website.image_logo"
+                        />
+                    </a>
+                </div>
+                <fuse-horizontal-navigation
+                    class="mr-2 mx-auto"
+                    [name]="'mainNavigation'"
+                    [navigation]="navigation.horizontal"
+                ></fuse-horizontal-navigation>
+            </ng-container>
+            <!-- Navigation toggle button -->
+            <ng-container *ngIf="isScreenSmall">
+                <button
+                    mat-icon-button
+                    (click)="toggleNavigation('mainNavigation')"
+                >
+                    <mat-icon [svgIcon]="'heroicons_solid:menu'"></mat-icon>
+                </button>
+                <a (click)="go_to_home()">
+                    <img
+                        class="h-13 w-auto"
+                        [src]="thong_tin_website.image_logo"
+                        alt="Logo image"
+                    />
+                </a>
+            </ng-container>
+            <!-- Components -->
+            <div class="flex items-center pl-2 ml-auto space-x-2 md:pr-1">
+                <search [appearance]="'bar'"></search>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div
+        class="flex flex-col flex-auto w-full"
+        [ngClass]="{
+            margin_header_web: !isScreenSmall && windowScrolled,
+            margin_header_mobile: isScreenSmall && windowScrolled
+        }"
+    >
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
+        <router-outlet *ngIf="true"></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <div
+        class="flex flex-col md:flex-row lg:flex-row flex-wrap w-full print:hidden z-50 bg-orange-600"
+    >
+        <div
+            class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap w-full leading-10 mx-auto md:px-18 px-6 pt-4 max-w-screen-xl bg-orange-600"
+        >
+            <div *ngIf="!isScreenSmall" class="flex-1 items-center">
+                <img class="w-full" [src]="thong_tin_website.image_logo" />
+            </div>
+            <div *ngIf="isScreenSmall" class="flex-1 items-center">
+                <img class="w-1/2" [src]="thong_tin_website.image_logo" />
+            </div>
+            <div class="flex-1 text-white">
+                <span
+                    class="text-2xl font-bold uppercase"
+                    transloco="portal.thong_tin_lien_he"
+                ></span>
+                <hr
+                    style="
+                        border-color: #ffffff;
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                        border-bottom-width: 0px;
+                        border-top-width: 1px !important;
+                    "
+                />
+                <div class="flex place-items-start space-x-1">
+                    <svg
+                        class="h-5 w-5 text-white"
+                        style="margin-top: 10px"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                        />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <span>{{ thong_tin_website.dia_chi }}</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <svg
+                        class="h-5 w-5 text-white"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
+                        />
+                    </svg>
+                    <span>{{ thong_tin_website.so_dien_thoai }}</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <svg
+                        class="h-5 w-5 text-white"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    <span>{{ thong_tin_website.email }}</span>
+                </div>
+                <div class="leading-6 mb-12">
+                    <span class="flex-1 text-sm" style="color: #ffffff8a">
+                        Copyright © {{ currentYear }} CuaSneaker - All right
+                        reserved </span
+                    ><a
+                        href="https://worldsoft.com.vn/"
+                        class="text-sm"
+                        style="color: #ffffff8a"
+                        >Powered by Worldsoft LeThanhThai</a
+                    >
+                </div>
+            </div>
+
+            <div class="flex-1">
+                <div align="left" class="flex-1 text-white">
+                    <span
+                        class="text-2xl font-bold uppercase"
+                        transloco="portal.lien_ket"
+                    ></span>
+                    <hr
+                        style="
+                            margin-top: 8px;
+                            margin-bottom: 8px;
+                            border-bottom-width: 0px;
+                            border-top-width: 1px !important;
+                        "
+                    />
+                    <div class="flex flex-col text-white leading-10">
+                        <span *ngFor="let item of list_lien_ket">
+                            <a
+                                [routerLink]="[item.link]"
+                                style="text-decoration: none; color: #ffffff"
+                            >
+                                <span class="text-xl">{{
+                                    item.name | transloco
+                                }}</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 text-white">
+                <div align="left" class="flex-1">
+                    <span
+                        class="text-2xl font-bold uppercase"
+                        transloco="portal.ho_tro"
+                    ></span>
+                    <hr
+                        style="
+                            border-color: #ffffff;
+                            margin-top: 8px;
+                            margin-bottom: 8px;
+                            border-bottom-width: 0px;
+                            border-top-width: 1px !important;
+                        "
+                    />
+                    <div class="flex flex-col text-white leading-10">
+                        <span *ngFor="let item of list_dieu_khoan">
+                            <a
+                                [routerLink]="[item.link]"
+                                style="text-decoration: none; color: #ffffff"
+                            >
+                                <span class="text-xl">{{
+                                    item.name | transloco
+                                }}</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 text-white">
+                <span
+                    class="text-2xl font-bold text-white uppercase"
+                    transloco="portal.ket_noi_voi_chung_toi"
+                ></span>
+                <hr
+                    style="
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                        border-bottom-width: 0px;
+                        border-top-width: 1px !important;
+                    "
+                />
+                <div class="flex items-center mt-4 mb-4 space-x-6">
+                    <a
+                        *ngIf="thong_tin_website.link_facebook != ''"
+                        href="{{ thong_tin_website.link_facebook }}"
+                        target="_blank"
+                    >
+                        <img
+                            [src]="thong_tin_website.image_facebook"
+                            style="height: 45px; width: auto"
+                        />
+                    </a>
+                    <a
+                        *ngIf="thong_tin_website.link_youtube != ''"
+                        href="{{ thong_tin_website.link_youtube }}"
+                        target="_blank"
+                    >
+                        <img
+                            [src]="thong_tin_website.image_youtube"
+                            style="height: 45px; width: auto"
+                        />
+                    </a>
+                    <a
+                        *ngIf="thong_tin_website.link_linkedin != ''"
+                        href="{{ thong_tin_website.link_linkedin }}"
+                        target="_blank"
+                    >
+                        <img
+                            [src]="thong_tin_website.image_linkedin"
+                            style="height: 45px; width: auto"
+                        />
+                    </a>
+                    <a
+                        *ngIf="thong_tin_website.link_instagram != ''"
+                        href="{{ thong_tin_website.link_instagram }}"
+                        target="_blank"
+                    >
+                        <img
+                            [src]="thong_tin_website.image_instagram"
+                            style="height: 45px; width: auto"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
