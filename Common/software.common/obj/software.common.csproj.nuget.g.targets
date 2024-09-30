@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.options\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Options.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.options\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Options.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="$(NuGetPackageRoot)entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.targets" Condition="Exists('$(NuGetPackageRoot)entityframework\6.5.1\buildTransitive\net6.0\EntityFramework.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.netframework.analyzers\3.3.2\build\Microsoft.NetFramework.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.netframework.analyzers\3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.netcore.analyzers\3.3.2\build\Microsoft.NetCore.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.netcore.analyzers\3.3.2\build\Microsoft.NetCore.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.codequality.analyzers\3.3.2\build\Microsoft.CodeQuality.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codequality.analyzers\3.3.2\build\Microsoft.CodeQuality.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.versioncheckanalyzer\3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.versioncheckanalyzer\3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.fxcopanalyzers\3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.fxcopanalyzers\3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.extensions\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.extensions\2.2.0\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\7.0.20\buildTransitive\Microsoft.AspNetCore.Identity.UI.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\7.0.20\buildTransitive\Microsoft.AspNetCore.Identity.UI.targets')" />
+  </ImportGroup>
+</Project>

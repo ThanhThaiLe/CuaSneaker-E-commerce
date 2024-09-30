@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="7.0.20" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="NewId" Version="4.0.1" />
+		<PackageReference Include="Opc.UaFx.Client" Version="2.42.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Common\software.common\software.common.csproj" />
+	  <ProjectReference Include="..\..\Domain\software.database\software.database.csproj" />
+	  <ProjectReference Include="..\software.repo.system\software.repo.system.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,17 @@
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.configuration.erp.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.configuration.erp.AssemblyInfoInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.configuration.erp.AssemblyInfo.cs
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.configuration.erp.csproj.CoreCompileInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.configuration.erp.csproj.AssemblyReference.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\bin\Debug\net8.0\software.configuration.erp.deps.json
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\bin\Debug\net8.0\software.configuration.erp.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\bin\Debug\net8.0\software.configuration.erp.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\bin\Debug\net8.0\domain.services.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\bin\Debug\net8.0\software.entity.erp.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\bin\Debug\net8.0\software.entity.erp.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\bin\Debug\net8.0\domain.services.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.CAFF9888.Up2Date
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.configuration.erp.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\refint\software.configuration.erp.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\software.configuration.erp.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.erp\obj\Debug\net8.0\ref\software.configuration.erp.dll

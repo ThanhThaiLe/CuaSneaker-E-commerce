@@ -1,0 +1,605 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Common\\software.common\\software.common.csproj": {}
+  },
+  "projects": {
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Common\\software.common\\software.common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Common\\software.common\\software.common.csproj",
+        "projectName": "software.common",
+        "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Common\\software.common\\software.common.csproj",
+        "packagesPath": "C:\\Users\\ThaiLe\\.nuget\\packages\\",
+        "outputPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Common\\software.common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ThaiLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.database\\software.database.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.database\\software.database.csproj"
+              },
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.11.61, )"
+            },
+            "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
+              "target": "Package",
+              "version": "[7.0.20, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.CodeAnalysis.FxCopAnalyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.3.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.7.1, )"
+            },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.2, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "System.ServiceModel.Duplex": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.ServiceModel.NetTcp": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.ServiceModel.Security": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "ZXing.Net": {
+              "target": "Package",
+              "version": "[0.16.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\domain.services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\domain.services.csproj",
+        "projectName": "domain.services",
+        "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\domain.services.csproj",
+        "packagesPath": "C:\\Users\\ThaiLe\\.nuget\\packages\\",
+        "outputPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ThaiLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.erp\\software.configuration.erp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.erp\\software.configuration.erp.csproj",
+        "projectName": "software.configuration.erp",
+        "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.erp\\software.configuration.erp.csproj",
+        "packagesPath": "C:\\Users\\ThaiLe\\.nuget\\packages\\",
+        "outputPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.erp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ThaiLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\software.entity.erp.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\software.entity.erp.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.system\\software.configuration.system.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.system\\software.configuration.system.csproj",
+        "projectName": "software.configuration.system",
+        "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.system\\software.configuration.system.csproj",
+        "packagesPath": "C:\\Users\\ThaiLe\\.nuget\\packages\\",
+        "outputPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.system\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ThaiLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.database\\software.database.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.database\\software.database.csproj",
+        "projectName": "software.database",
+        "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.database\\software.database.csproj",
+        "packagesPath": "C:\\Users\\ThaiLe\\.nuget\\packages\\",
+        "outputPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.database\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ThaiLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.erp\\software.configuration.erp.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.erp\\software.configuration.erp.csproj"
+              },
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.system\\software.configuration.system.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.configuration.system\\software.configuration.system.csproj"
+              },
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\software.entity.erp.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\software.entity.erp.csproj"
+              },
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.28.0, )"
+            },
+            "MongoDB.Driver.GridFS": {
+              "target": "Package",
+              "version": "[2.28.0, )"
+            },
+            "NETStandard.Library": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\software.entity.erp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\software.entity.erp.csproj",
+        "projectName": "software.entity.erp",
+        "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\software.entity.erp.csproj",
+        "packagesPath": "C:\\Users\\ThaiLe\\.nuget\\packages\\",
+        "outputPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.erp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ThaiLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\domain.services.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\domain.services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj",
+        "projectName": "software.entity.system",
+        "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\software.entity.system.csproj",
+        "packagesPath": "C:\\Users\\ThaiLe\\.nuget\\packages\\",
+        "outputPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\software.entity.system\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ThaiLe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\domain.services.csproj": {
+                "projectPath": "D:\\ThanhThaiLe\\CuaSneaker\\cuasneaker\\Domain\\domain.services\\domain.services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

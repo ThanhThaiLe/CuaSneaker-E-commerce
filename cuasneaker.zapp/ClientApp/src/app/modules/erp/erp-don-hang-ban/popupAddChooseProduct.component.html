@@ -1,0 +1,203 @@
+<div
+    class="flex flex-col flex-auto w-full mx-auto h-fit overflow-y-visible mobile:mb-20"
+>
+    <!-- Header -->
+    <div
+        class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary"
+    >
+        <div class="text-lg font-medium" transloco="NAV.erp_don_hang_ban"></div>
+    </div>
+    <!-- Card Form -->
+    <div class="w-full p-6 sm:p-8 space-y-1 overflow-y-auto">
+        <div class="flex flex-row justify-end space-x-2">
+            <button
+                class="rounded py-2 px-4 font-bold bg-gray-500 hover:bg-gray-600 items-center"
+                (click)="save()"
+            >
+                <p transloco="common.choose" class="mb-0 text-white"></p>
+            </button>
+            <button
+                class="py-2 px-4 font-bold rounded bg-teal-500 hover:bg-teal-600 items-center"
+                (click)="close()"
+            >
+                <p transloco="common.close" class="mb-0 text-white"></p>
+            </button>
+        </div>
+        <div class="mb-2">
+            <mat-card class="rounded-2xl py-6 px-6 shadow">
+                <div
+                    class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+                >
+                    <div class="flex-1">
+                        <mat-form-field class="w-full" floatLabel="always">
+                            <mat-label>{{
+                                "common.search" | transloco
+                            }}</mat-label>
+                            <input
+                                floatLabel="always"
+                                matInput
+                                [(ngModel)]="filter.search"
+                                (keyup.enter)="rerender()"
+                                placeholder="{{
+                                    'common.go_tu_khoa_tim_kiem' | transloco
+                                }}"
+                            />
+                            <button
+                                mat-icon-button
+                                color="primary"
+                                class="mr-4"
+                                (click)="rerender()"
+                            >
+                                Tìm kiếm
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex-1">
+                        <cm_select
+                            [label]="'common.use_status'"
+                            [listData]="list_status_del"
+                            [callbackChange]="rerender.bind(this)"
+                            [(model)]="filter.status_del"
+                        ></cm_select>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-col md:flex-row lg:flex-row md:space-x-4 flex-wrap"
+                >
+                    <div class="flex-1">
+                        <cm_select
+                            [label]="'system.size'"
+                            [listData]="list_size"
+                            [callbackChange]="rerender.bind(this)"
+                            [(model)]="filter.id_size"
+                        ></cm_select>
+                    </div>
+                    <div class="flex-1">
+                        <cm_select
+                            [label]="'system.code_color'"
+                            [listData]="list_color"
+                            [callbackChange]="rerender.bind(this)"
+                            [(model)]="filter.id_color"
+                        ></cm_select>
+                    </div>
+                </div>
+            </mat-card>
+            <br />
+            <table
+                datatable
+                [dtOptions]="dtOptions"
+                style="width: 100% !important"
+                class="w-full cell-border myTable hover"
+            >
+                <thead>
+                    <tr>
+                        <th style="min-width: 50px"></th>
+                        <th style="min-width: 50px" transloco="system.stt"></th>
+                        <th transloco="system.san_pham"></th>
+                        <th transloco="system.code_color"></th>
+                        <th transloco="system.size"></th>
+                        <th transloco="system.gia_ban"></th>
+                        <th transloco="system.note"></th>
+                        <th transloco="system.update_by"></th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="listData?.length != 0">
+                    <tr *ngFor="let item of listData; index as i">
+                        <td>
+                            <button
+                                mat-icon-button
+                                [matMenuTriggerFor]="appMenu"
+                            >
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #appMenu="matMenu">
+                                <button
+                                    mat-menu-item
+                                    (click)="openDialogEdit(item, i)"
+                                    transloco="common.edit"
+                                ></button>
+                                <button
+                                    mat-menu-item
+                                    (click)="openDialogDetail(item, i)"
+                                    transloco="common.detail"
+                                ></button>
+                                <button
+                                    *ngIf="item.db.status_del == 2"
+                                    mat-menu-item
+                                    (click)="revertStatus(item, 1)"
+                                    transloco="common.revert_use"
+                                ></button>
+                                <button
+                                    *ngIf="item.db.status_del == 1"
+                                    mat-menu-item
+                                    (click)="revertStatus(item, 2)"
+                                    transloco="common.no_user"
+                                ></button>
+                                <button
+                                    mat-menu-item
+                                    (click)="openDialogFileUpload(item, 2)"
+                                    transloco="common.file_upload"
+                                ></button>
+                            </mat-menu>
+                        </td>
+                        <td style="text-align: center">{{ i + 1 }}</td>
+                        <td>
+                            <a
+                                (click)="
+                                    openDialogDetailSanPham(item.db.id_san_pham)
+                                "
+                                class="underline font-bold"
+                                style="color: #ef5425"
+                                >{{ item.ma_san_pham }}</a
+                            >
+                            <br />
+                            {{ item.ten_san_pham }}
+                        </td>
+                        <td>
+                            <span [style.color]="item.color_code">{{
+                                item.color
+                            }}</span>
+                        </td>
+                        <td>{{ item.size }}</td>
+                        <td>{{ item.db.gia_ban | number }}</td>
+                        <td>{{ item.db.note }}</td>
+                        <td>
+                            {{ item.update_name }} <br />{{
+                                item.db.update_date | date : "dd/MM/yyyy"
+                            }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="listData?.length == 0">
+                    <tr class="h-40">
+                        <td colspan="100" class="no-data-available">
+                            <nz-empty
+                                nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+                                [nzNotFoundContent]="contentNoData"
+                            >
+                                <ng-template #contentNoData>
+                                    <span transloco="common.no_data"></span>
+                                </ng-template>
+                            </nz-empty>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex flex-row justify-end space-x-2">
+            <button
+                class="rounded py-2 px-4 font-bold bg-gray-500 hover:bg-gray-600 items-center"
+                (click)="save()"
+            >
+                <p transloco="common.choose" class="mb-0 text-white"></p>
+            </button>
+            <button
+                class="py-2 px-4 font-bold rounded bg-teal-500 hover:bg-teal-600 items-center"
+                (click)="close()"
+            >
+                <p transloco="common.close" class="mb-0 text-white"></p>
+            </button>
+        </div>
+    </div>
+</div>

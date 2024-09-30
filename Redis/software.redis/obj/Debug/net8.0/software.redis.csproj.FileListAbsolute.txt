@@ -1,0 +1,12 @@
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\bin\Debug\net8.0\software.redis.deps.json
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\bin\Debug\net8.0\software.redis.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\bin\Debug\net8.0\software.redis.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\software.redis.csproj.AssemblyReference.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\software.redis.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\software.redis.AssemblyInfoInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\software.redis.AssemblyInfo.cs
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\software.redis.csproj.CoreCompileInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\software.redis.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\refint\software.redis.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\software.redis.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Redis\software.redis\obj\Debug\net8.0\ref\software.redis.dll

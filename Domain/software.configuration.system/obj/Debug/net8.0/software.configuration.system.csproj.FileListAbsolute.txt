@@ -1,0 +1,17 @@
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\bin\Debug\net8.0\software.configuration.system.deps.json
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\bin\Debug\net8.0\software.configuration.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\bin\Debug\net8.0\software.configuration.system.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\bin\Debug\net8.0\software.entity.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\bin\Debug\net8.0\software.entity.system.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.configuration.system.csproj.AssemblyReference.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.configuration.system.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.configuration.system.AssemblyInfoInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.configuration.system.AssemblyInfo.cs
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.configuration.system.csproj.CoreCompileInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.9C43D622.Up2Date
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.configuration.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\refint\software.configuration.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\software.configuration.system.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\obj\Debug\net8.0\ref\software.configuration.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\bin\Debug\net8.0\domain.services.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.configuration.system\bin\Debug\net8.0\domain.services.pdb

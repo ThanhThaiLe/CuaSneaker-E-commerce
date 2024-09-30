@@ -1,0 +1,11 @@
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\bin\Debug\net8.0\domain.services.deps.json
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\bin\Debug\net8.0\domain.services.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\bin\Debug\net8.0\domain.services.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\domain.services.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\domain.services.AssemblyInfoInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\domain.services.AssemblyInfo.cs
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\domain.services.csproj.CoreCompileInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\domain.services.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\refint\domain.services.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\domain.services.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\domain.services\obj\Debug\net8.0\ref\domain.services.dll

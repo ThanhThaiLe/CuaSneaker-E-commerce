@@ -1,0 +1,15 @@
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\bin\Debug\net8.0\software.entity.system.deps.json
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\bin\Debug\net8.0\software.entity.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\bin\Debug\net8.0\software.entity.system.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.entity.system.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.entity.system.AssemblyInfoInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.entity.system.AssemblyInfo.cs
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.entity.system.csproj.CoreCompileInputs.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.entity.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\refint\software.entity.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.entity.system.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\ref\software.entity.system.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.entity.system.csproj.AssemblyReference.cache
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\bin\Debug\net8.0\domain.services.dll
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\bin\Debug\net8.0\domain.services.pdb
+D:\ThanhThaiLe\CuaSneaker\cuasneaker\Domain\software.entity.system\obj\Debug\net8.0\software.DCF9DC92.Up2Date
